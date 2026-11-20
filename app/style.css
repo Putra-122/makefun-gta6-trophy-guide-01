@@ -1,0 +1,155 @@
+/* Leonida Legend — Vice City neon, dark. System fonts only; nothing loads over the network. */
+:root {
+  --bg: #0d0714;
+  --panel: #1a0f26;
+  --panel2: #221231;
+  --ink: #f4eefb;
+  --muted: #b9a8cc;
+  --line: #3a2350;
+  --pink: #ff2e88;
+  --cyan: #2ee6ff;
+  --gold: #ffd34d;
+  --silver: #cfd6e4;
+  --bronze: #e0955a;
+  --platinum: #7ee7ff;
+  --green: #3ddc84;
+  --red: #ff5c5c;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.55 -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--cyan); }
+a:hover { color: #8ef1ff; }
+
+.hero {
+  background: linear-gradient(135deg, #2a0a4a 0%, #6d0f5e 55%, #0f2a4a 100%);
+  border-bottom: 3px solid var(--pink);
+  padding: 36px 20px 28px;
+}
+.hero-inner { max-width: 1020px; margin: 0 auto; }
+.kicker { margin: 0 0 6px; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; color: var(--cyan); }
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: 44px;
+  line-height: 1.05;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #ff9ecf, var(--pink) 40%, var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.tagline { max-width: 720px; margin: 0 0 18px; color: #e8dcf5; }
+.progress-wrap { max-width: 720px; }
+.progress-numbers { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 6px; }
+.progress-bar { height: 12px; background: #12081d; border: 1px solid var(--line); border-radius: 99px; overflow: hidden; }
+.progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--pink), var(--cyan)); transition: width .3s; }
+.grade-counts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; font-size: 13px; font-weight: 700; }
+.grade-count { padding: 2px 10px; border-radius: 99px; border: 1px solid var(--line); background: var(--panel); }
+
+.tabs { max-width: 1020px; margin: 0 auto; padding: 14px 20px 0; display: flex; gap: 8px; flex-wrap: wrap; }
+.tab {
+  padding: 9px 18px; border: 1px solid var(--line); border-bottom: none;
+  border-radius: 10px 10px 0 0; color: var(--muted); text-decoration: none; font-weight: 700;
+  background: var(--panel);
+}
+.tab.active { color: var(--ink); background: var(--panel2); border-color: var(--pink); }
+
+main { max-width: 1020px; margin: 0 auto; padding: 20px; }
+.controls {
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 12px;
+}
+.controls input[type="search"] {
+  flex: 1 1 220px; padding: 9px 12px; border-radius: 8px; border: 1px solid var(--line);
+  background: #12081d; color: var(--ink); font-size: 15px;
+}
+.controls select {
+  padding: 8px; border-radius: 8px; border: 1px solid var(--line);
+  background: #12081d; color: var(--ink); font-size: 14px;
+}
+.controls label { font-size: 13px; color: var(--muted); font-weight: 700; display: flex; gap: 6px; align-items: center; }
+.check-inline { cursor: pointer; }
+.spacer { flex: 1; }
+button, .import-btn {
+  padding: 9px 14px; border-radius: 8px; border: 1px solid var(--pink);
+  background: var(--pink); color: #fff; font-weight: 700; font-size: 14px; cursor: pointer;
+}
+button:hover, .import-btn:hover { background: #ff4d9c; }
+button.danger { background: transparent; border-color: var(--red); color: var(--red); }
+.import-btn input { display: none; }
+.list-meta { color: var(--muted); font-size: 14px; margin: 14px 2px; }
+
+.cards { display: grid; gap: 12px; }
+.card {
+  display: flex; gap: 14px; align-items: flex-start;
+  background: var(--panel); border: 1px solid var(--line); border-left: 5px solid var(--bronze);
+  border-radius: 12px; padding: 14px 16px;
+}
+.card.grade-platinum { border-left-color: var(--platinum); }
+.card.grade-gold { border-left-color: var(--gold); }
+.card.grade-silver { border-left-color: var(--silver); }
+.card.earned { opacity: .72; }
+.card.earned h3 a { text-decoration: line-through; }
+.card.concealed { background: #150b20; }
+.check { flex: 0 0 auto; padding-top: 2px; cursor: pointer; }
+.check input { display: none; }
+.checkmark {
+  display: inline-block; width: 26px; height: 26px; line-height: 24px; text-align: center;
+  border: 2px solid var(--muted); border-radius: 7px; color: transparent; font-weight: 900;
+}
+.check input:checked + .checkmark { background: var(--green); border-color: var(--green); color: #06210f; }
+.card-body { flex: 1; min-width: 0; }
+.card-top { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 4px; }
+.grade-badge {
+  font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+  padding: 2px 9px; border-radius: 99px; color: #160a20;
+}
+.grade-badge.grade-platinum { background: var(--platinum); }
+.grade-badge.grade-gold { background: var(--gold); }
+.grade-badge.grade-silver { background: var(--silver); }
+.grade-badge.grade-bronze { background: var(--bronze); }
+.card-cat { font-size: 12px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.flag { font-size: 12px; font-weight: 800; padding: 2px 8px; border-radius: 99px; }
+.flag-missable { background: #4a1608; color: #ffb199; border: 1px solid #ff7a59; }
+.flag-hidden { background: #241a33; color: #cbb8e6; border: 1px solid var(--line); }
+.card h2, .card h3 { margin: 2px 0 4px; font-size: 20px; }
+.card h3 a { color: var(--ink); text-decoration: none; }
+.card h3 a:hover { color: var(--cyan); }
+.card-desc { margin: 0 0 8px; color: #e8dcf5; font-style: italic; }
+.card-guide { margin: 0 0 6px; }
+.card-source { margin: 0; font-size: 13px; color: var(--muted); }
+.empty { color: var(--muted); }
+
+.roadmap h2, .missable h2 { font-size: 28px; margin: 4px 0 10px; }
+.roadmap-intro, .missable-intro { max-width: 760px; color: #e8dcf5; }
+.phase {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+  padding: 16px 18px; margin: 14px 0;
+}
+.phase h3 { margin: 0 0 2px; font-size: 20px; color: var(--cyan); }
+.phase-time { margin: 0 0 8px; color: var(--muted); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.phase-trophies { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 6px; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.phase-trophies li { font-size: 14px; }
+.phase-trophies a { color: var(--ink); text-decoration: none; }
+.phase-trophies a:hover { color: var(--cyan); }
+.roadmap-note, .missable-note { color: var(--muted); font-size: 14px; }
+.missable .card { border-left-color: #ff7a59; }
+
+.detail .back { margin: 0 0 12px; }
+.detail-card h2 { font-size: 26px; }
+.detail-card h3 { font-size: 16px; color: var(--cyan); margin-top: 12px; }
+.prev-next { display: flex; justify-content: space-between; margin-top: 16px; font-weight: 700; }
+
+footer { max-width: 1020px; margin: 0 auto; padding: 10px 20px 30px; color: var(--muted); font-size: 13px; }
+
+@media (max-width: 640px) {
+  .hero h1 { font-size: 32px; }
+  .card { flex-direction: column; }
+  .controls { flex-direction: column; align-items: stretch; }
+  .spacer { display: none; }
+}
