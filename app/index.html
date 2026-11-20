@@ -1,38 +1,85 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI Trophy Guide &amp; Tracker — Leonida Legend</title>
+<title>Leonida Legend — GTA VI Trophy Guide &amp; Tracker</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="hero">
-  <div class="hero-inner">
-    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; 55 trophies</p>
+<header class="top">
+  <div class="brand">
     <h1>Leonida Legend</h1>
-    <p class="tagline">The complete trophy guide and tracker for GTA VI — every trophy with its official name, description and grade, a guide in plain words with its source, a roadmap to the platinum, and the one trophy you can miss.</p>
-    <div class="progress-wrap">
-      <div class="progress-numbers"><span id="progressText">0 of 55 earned</span><span id="progressPct">0%</span></div>
-      <div class="progress-bar"><div id="progressFill" class="progress-fill"></div></div>
-      <div class="grade-counts" id="gradeCounts"></div>
-    </div>
+    <p class="tag">Every GTA VI trophy on PlayStation 5 — guide, tracker and road to the Platinum.</p>
+  </div>
+  <div class="progress" id="progress" aria-live="polite">
+    <div class="progress-count"><span id="earned-count">0</span><span class="of">/ 55 earned</span></div>
+    <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    <div class="progress-grades" id="progress-grades"></div>
   </div>
 </header>
 
-<nav class="tabs">
-  <a href="#/" id="tabChecklist" class="tab">Checklist</a>
-  <a href="#/roadmap" id="tabRoadmap" class="tab">Platinum roadmap</a>
-  <a href="#/missable" id="tabMissable" class="tab">Missable: 1</a>
+<nav class="views" aria-label="Views">
+  <button class="view-btn" data-view="checklist" type="button">Checklist</button>
+  <button class="view-btn" data-view="roadmap" type="button">Platinum roadmap</button>
+  <button class="view-btn" data-view="missable" type="button">Missable</button>
 </nav>
 
-<main id="view"></main>
+<section class="controls" aria-label="Filters">
+  <input id="search" type="search" placeholder="Search trophies by name or description…" aria-label="Search trophies">
+  <label>Grade
+    <select id="grade-filter">
+      <option value="">All grades</option>
+      <option value="platinum">Platinum</option>
+      <option value="gold">Gold</option>
+      <option value="silver">Silver</option>
+      <option value="bronze">Bronze</option>
+    </select>
+  </label>
+  <label>Category
+    <select id="category-filter">
+      <option value="">All categories</option>
+      <option value="story">Story</option>
+      <option value="strangers">Strangers &amp; Freaks</option>
+      <option value="activities">Activities</option>
+      <option value="crime">Crime</option>
+      <option value="collectibles">Collectibles</option>
+      <option value="misc">Odd jobs</option>
+      <option value="completion">100% completion</option>
+      <option value="platinum">Platinum</option>
+    </select>
+  </label>
+  <label>Status
+    <select id="status-filter">
+      <option value="">Earned &amp; unearned</option>
+      <option value="earned">Earned only</option>
+      <option value="unearned">Unearned only</option>
+    </select>
+  </label>
+  <label class="check"><input id="missable-only" type="checkbox"> Missable only</label>
+  <label class="check"><input id="spoiler-toggle" type="checkbox"> Show spoilers (hidden trophies)</label>
+</section>
 
-<footer>
-  <p>Unofficial fan-made guide. Trophy names and descriptions are shown as PlayStation publishes them; every guide is written for this page and cites its source beside it. No Rockstar Games logo or official artwork is used. Works fully offline — progress is saved in your browser only, never sent anywhere.</p>
-  <p class="sources">List sources: Push Square, Insider Gaming, EGamers, GTAScoop. See each trophy's guide for its own source.</p>
+<section class="tools" aria-label="Progress tools">
+  <button id="export-btn" type="button">Export progress (JSON)</button>
+  <label class="import-label">Import progress <input id="import-file" type="file" accept="application/json,.json"></label>
+  <button id="reset-btn" type="button">Reset progress</button>
+  <span class="note">Progress is saved on this device only. No account, no network — the guide works offline.</span>
+</section>
+
+<main id="main">
+  <div id="detail" class="detail" hidden></div>
+  <div id="roadmap" class="roadmap" hidden></div>
+  <div id="missable" class="missable" hidden></div>
+  <ul id="list" class="list" aria-live="polite"></ul>
+  <p id="empty" class="empty" hidden>No trophies match these filters. Loosen a filter to see more.</p>
+</main>
+
+<footer class="foot">
+  <p>55 trophies: 1 Platinum, 2 Gold, 6 Silver, 46 Bronze. 28 are hidden on PlayStation until earned — this guide keeps them hidden until you choose to see them. One trophy may be missable: Positive Mental Attitude.</p>
+  <p>Guides are written in the maker's own words from the sources cited beside each trophy. Official trophy names and descriptions are shown as PlayStation publishes them. No Rockstar Games logo, artwork or game imagery is used here.</p>
 </footer>
 
-<script type="module" src="app.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

@@ -1,38 +1,37 @@
 # Leonida Legend — GTA VI Trophy Guide & Tracker
 
-![make.fun](https://make.fun/badge/gta6-trophy-guide-01.svg)
-![Rank](https://make.fun/badge/gta6-trophy-guide-01/Putra-122/makefun-gta6-trophy-guide-01/rank.svg)
-![Reward](https://make.fun/badge/gta6-trophy-guide-01/Putra-122/makefun-gta6-trophy-guide-01/reward.svg)
+[![gta6-trophy-guide-01](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![rank](https://make.fun/badge/gta6-trophy-guide-01/Putra-122/makefun-gta6-trophy-guide-01/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![reward](https://make.fun/badge/gta6-trophy-guide-01/Putra-122/makefun-gta6-trophy-guide-01/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
 
-An offline web app that is the best guide and tracker for the 55 PlayStation 5 trophies of Grand Theft Auto VI — built for the [gta6-trophy-guide-01 bounty on make.fun](https://make.fun/bounty/gta6-trophy-guide-01).
+An offline web app that guides PlayStation 5 players through all **55 GTA VI trophies** (1 Platinum, 2 Gold, 6 Silver, 46 Bronze) and tracks progress to the Platinum, **Vice Got a Price!**
 
 ## What it does
 
-- **The official list, all 55 trophies** — 1 Platinum, 2 Gold, 6 Silver, 46 Bronze, each with its official name, description and grade (28 of them hidden, exactly as PlayStation lists them).
-- **A guide for every trophy, in plain words, with its source cited** — what to do, where and how, and when it can be missed. Sources: Push Square, Insider Gaming, EGamers, GTAScoop.
-- **Checklist saved in the browser** — tick trophies off as you earn them; progress survives reloads. Export it as JSON and import it back on another machine.
-- **Filters by grade and kind, plus text search** — find the Silver grind, the stranger strands, or just the money trophies.
-- **Spoiler setting** — the 28 hidden trophies stay concealed until you earn them or turn spoilers on, so the story stays unspoiled.
-- **Platinum roadmap** — four phases from the first mission to 100% Completion, about 200–300 hours.
-- **The one missable trophy, flagged** — Positive Mental Attitude (meditate at all 18 spots) is the only trophy that can slip away; one spot is at Jason's house in Chapter 1.
+- **Checklist** — every trophy with its official name, description and grade; tick trophies off and progress is saved on the device (localStorage, no account, no network).
+- **Guides in the maker's own words** — one per trophy, each citing its source (Push Square, PowerPyx, GamesFuze, Insider Gaming, EGamers, GTAScoop). Where a trophy's method is still unconfirmed by players, the guide says so instead of inventing steps.
+- **Spoiler setting** — the 28 hidden trophies stay concealed (name, description and guide) until earned or until the reader turns spoilers on.
+- **Platinum roadmap** — four phases: story, strangers, activities and crime cleanup, then collectibles and the 100% checklist, with per-phase progress.
+- **Missable view** — flags the only possibly missable trophy, Positive Mental Attitude (meditate at Jason's house in Chapter 1), and confirms the other 54 are safe.
+- **Search and filters** — by name or description, grade, category, earned state, and missable-only.
+- **Export / import** — progress as JSON, so it survives a device change.
 
-## Run it
-
-Static files, no build step, no network. Open `app/index.html` in a desktop browser, or serve the folder:
+## Try it
 
 ```sh
-node serve.ts   # serves app/ at http://localhost:8080 (development only)
+node serve.ts        # serves app/ at http://localhost:8080
 ```
 
-The entry program `main.ts` (Node 22+) copies `app/` and `screenshots/` to `/output` and writes `/output/dossier.json`:
+## Hand in
 
 ```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-## Files
+`main.ts` copies `app/` and `screenshots/` to the output directory and writes `dossier.json` with the kit's `buildDossier`.
 
-- `app/index.html`, `app/app.js`, `app/style.css` — the guide itself.
-- `app/data/trophies.json` — the 55 trophies with official names, descriptions, grades, hidden flags, categories, missable flags, guides and sources.
-- `screenshots/` — 4 renders of the guide running in a browser (checklist, a trophy guide, the roadmap, the Silver filter).
-- `main.ts` — the entry program. `vendor/makefun-frontend.ts` is the kit's copy, unchanged.
+## Notes
+
+- The app fetches nothing at runtime: `app/data/trophies.json` is a local file. The only links that leave the page are the source citations beside each guide, opened only when the reader follows them.
+- No Rockstar Games logo, official artwork or game imagery is used anywhere in the app or its screenshots.
+- Screenshots in `screenshots/` are real renders of this app in a browser (1280×800), listed in `shots.json`.
