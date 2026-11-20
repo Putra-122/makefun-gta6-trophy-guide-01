@@ -4,8 +4,14 @@
 // (Node 22 erasable TypeScript, no build step, no dependencies).
 // MAKEFUN_OUTPUT_DIR stands in for /output outside the grader.
 // The output is deterministic: the same repository writes the same bytes.
+//
+// Hardened for the grader sandbox: this program never deletes anything.
+// It only creates the output directory (mkdirSync, recursive, a no-op when
+// it already exists), copies app/ and screenshots/ into it (overwriting),
+// builds the dossier and writes dossier.json. It works when the repository
+// is read-only and MAKEFUN_OUTPUT_DIR is an absolute path outside it.
 
-import { cpSync, mkdirSync, rmSync, writeFileSync } from "node:fs";
+import { cpSync, mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildDossier } from "./vendor/makefun-frontend.ts";
@@ -13,7 +19,6 @@ import { buildDossier } from "./vendor/makefun-frontend.ts";
 const root = dirname(fileURLToPath(import.meta.url));
 const out = process.env.MAKEFUN_OUTPUT_DIR || "/output";
 
-rmSync(out, { recursive: true, force: true });
 mkdirSync(out, { recursive: true });
 cpSync(join(root, "app"), join(out, "app"), { recursive: true });
 cpSync(join(root, "screenshots"), join(out, "screenshots"), { recursive: true });
